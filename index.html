@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>InternBoard | Internship Opportunities</title>
+
+    <meta
+        name="description"
+        content="Find practical internship opportunities by role, domain, stipend and work mode with InternBoard."
+    />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a href="#" class="brand">
+                <span class="brand-icon">IB</span>
+                <span class="brand-text">InternBoard</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="#internships">Internships</a>
+                <a href="#about">About</a>
+            </nav>
+
+            <a href="#internships" class="btn btn-primary nav-btn">
+                Explore Roles
+                <span>→</span>
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+    <main>
+
+        <section class="hero">
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        STUDENT INTERNSHIP BOARD
+                    </div>
+
+                    <h1>
+                        Find an internship that
+                        <span>fits your skills.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Discover practical internship opportunities from
+                        growing companies. Search by role, domain and work mode
+                        to find your perfect opportunity.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#internships" class="btn btn-primary hero-btn">
+                            Browse Internships
+                            <span>→</span>
+                        </a>
+
+                        <a href="#about" class="btn btn-outline hero-btn">
+                            Learn More
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+
+                        <div class="hero-stat">
+                            <strong>100+</strong>
+                            <span>Opportunities</span>
+                        </div>
+
+                        <div class="hero-stat">
+                            <strong>25+</strong>
+                            <span>Companies</span>
+                        </div>
+
+                        <div class="hero-stat">
+                            <strong>10+</strong>
+                            <span>Domains</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO CARD -->
+                <div class="hero-visual">
+
+                    <div class="floating-shape shape-one"></div>
+                    <div class="floating-shape shape-two"></div>
+
+                    <div class="hero-card">
+
+                        <div class="hero-card-top">
+                            <span class="hero-card-label">
+                                ✨ Featured Opportunity
+                            </span>
+
+                            <span class="hero-card-status">
+                                Open
+                            </span>
+                        </div>
+
+                        <div class="hero-company">
+
+                            <div class="company-logo large-logo">
+                                TN
+                            </div>
+
+                            <div>
+                                <h3>Frontend Intern</h3>
+                                <p>TechNova</p>
+                            </div>
+
+                        </div>
+
+                        <div class="hero-job-details">
+
+                            <span>💼 Full Stack</span>
+                            <span>🌐 Remote</span>
+                            <span>💰 ₹15K / month</span>
+
+                        </div>
+
+                        <div class="hero-progress">
+
+                            <div class="progress-label">
+                                <span>Applications</span>
+                                <strong>68%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div class="progress-bar"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= INTERNSHIPS ================= -->
+        <section id="internships" class="internships-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-eyebrow">
+                            OPPORTUNITIES
+                        </span>
+
+                        <h2>Browse Internships</h2>
+
+                        <p>
+                            Explore internships and find the right opportunity
+                            to start building your career.
+                        </p>
+                    </div>
+
+                    <div class="results-wrapper">
+                        <span id="resultsCount">
+                            0 opportunities
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- ================= FILTER BOX ================= -->
+                <div class="filter-box">
+
+                    <div class="filter-header">
+
+                        <div>
+                            <span class="filter-icon">⌕</span>
+                            <strong>Find your opportunity</strong>
+                        </div>
+
+                        <span class="filter-hint">
+                            Search and filter internships
+                        </span>
+
+                    </div>
+
+
+                    <form id="filterForm" class="filter-form">
+
+                        <!-- SEARCH -->
+                        <div class="filter-group search-group">
+
+                            <label for="searchInput">
+                                Search
+                            </label>
+
+                            <div class="input-with-icon">
+
+                                <span class="input-icon">⌕</span>
+
+                                <input
+                                    type="search"
+                                    id="searchInput"
+                                    placeholder="Search by role, company or skill..."
+                                    autocomplete="off"
+                                />
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DOMAIN -->
+                        <div class="filter-group">
+
+                            <label for="domainFilter">
+                                Domain
+                            </label>
+
+                            <select id="domainFilter">
+
+                                <option value="all">
+                                    All Domains
+                                </option>
+
+                                <option value="Full Stack Development">
+                                    Full Stack Development
+                                </option>
+
+                                <option value="UI/UX">
+                                    UI/UX
+                                </option>
+
+                                <option value="Data Analytics">
+                                    Data Analytics
+                                </option>
+
+                                <option value="Cyber Security">
+                                    Cyber Security
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- WORK MODE -->
+                        <div class="filter-group">
+
+                            <label for="modeFilter">
+                                Work Mode
+                            </label>
+
+                            <select id="modeFilter">
+
+                                <option value="all">
+                                    All Modes
+                                </option>
+
+                                <option value="Remote">
+                                    Remote
+                                </option>
+
+                                <option value="Hybrid">
+                                    Hybrid
+                                </option>
+
+                                <option value="On-site">
+                                    On-site
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- RESET -->
+                        <button
+                            type="button"
+                            id="resetBtn"
+                            class="btn btn-reset"
+                        >
+                            Reset
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ================= FEATURED TITLE ================= -->
+                <div class="subsection-heading">
+
+                    <div>
+                        <span class="mini-label">
+                            ⭐ TOP PICKS
+                        </span>
+
+                        <h3>Featured Internships</h3>
+                    </div>
+
+                    <span class="subsection-note">
+                        Hand-picked opportunities for students
+                    </span>
+
+                </div>
+
+
+                <!-- ================= INTERNSHIP GRID ================= -->
+                <div
+                    id="internshipGrid"
+                    class="internship-grid"
+                >
+                    <!-- Cards generated by JavaScript -->
+                </div>
+
+
+                <!-- ================= EMPTY STATE ================= -->
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                    hidden
+                >
+
+                    <div class="empty-icon">
+                        🔍
+                    </div>
+
+                    <h3>No internships found</h3>
+
+                    <p>
+                        Try changing your search or filter options.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="emptyResetBtn"
+                        class="btn btn-primary"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+        <section id="about" class="about-section">
+
+            <div class="container about-container">
+
+                <div class="about-content">
+
+                    <span class="section-eyebrow">
+                        ABOUT INTERNBOARD
+                    </span>
+
+                    <h2>
+                        Start your career with
+                        <span>the right opportunity.</span>
+                    </h2>
+
+                    <p>
+                        InternBoard helps students discover internship
+                        opportunities that match their skills, interests and
+                        career goals.
+                    </p>
+
+                    <p>
+                        Whether you're looking for your first development
+                        internship, a UI/UX role, a data opportunity or a
+                        cybersecurity experience, InternBoard makes the search
+                        simple.
+                    </p>
+
+                    <a
+                        href="#internships"
+                        class="btn btn-primary"
+                    >
+                        Explore Internships
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="about-features">
+
+                    <div class="about-feature-card">
+
+                        <div class="feature-icon">
+                            🎯
+                        </div>
+
+                        <div>
+                            <h3>Skill Based</h3>
+                            <p>
+                                Find roles based on your skills and interests.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-feature-card">
+
+                        <div class="feature-icon">
+                            🚀
+                        </div>
+
+                        <div>
+                            <h3>Career Focused</h3>
+                            <p>
+                                Gain practical experience and build your career.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-feature-card">
+
+                        <div class="feature-icon">
+                            🌍
+                        </div>
+
+                        <div>
+                            <h3>Flexible Roles</h3>
+                            <p>
+                                Explore remote, hybrid and on-site internships.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= DETAILS MODAL ================= -->
+    <div
+        id="detailsModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div
+            class="modal-dialog details-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="detailsModalTitle"
+        >
+
+            <button
+                type="button"
+                id="detailsCloseBtn"
+                class="modal-close"
+                aria-label="Close details"
+            >
+                ×
+            </button>
+
+            <div id="detailsContent">
+                <!-- Details generated by JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= APPLY MODAL ================= -->
+    <div
+        id="applyModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div
+            class="modal-dialog apply-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="applyModalTitle"
+        >
+
+            <button
+                type="button"
+                id="applyCloseBtn"
+                class="modal-close"
+                aria-label="Close application form"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-heading">
+
+                <span class="modal-eyebrow">
+                    APPLICATION
+                </span>
+
+                <h2 id="applyModalTitle">
+                    Apply for Internship
+                </h2>
+
+                <p>
+                    Submit your details and take the next step toward your
+                    internship.
+                </p>
+
+            </div>
+
+
+            <form
+                id="applicationForm"
+                novalidate
+            >
+
+                <!-- Selected Role -->
+                <div class="selected-role">
+
+                    <span class="selected-role-icon">
+                        💼
+                    </span>
+
+                    <div>
+                        <small>Applying for</small>
+                        <strong id="applyRole">
+                            Internship Role
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <!-- NAME -->
+                <div class="form-group">
+
+                    <label for="applicantName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="applicantName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                    />
+
+                    <small
+                        id="nameError"
+                        class="form-error"
+                    ></small>
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div class="form-group">
+
+                    <label for="applicantEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="applicantEmail"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                    />
+
+                    <small
+                        id="emailError"
+                        class="form-error"
+                    ></small>
+
+                </div>
+
+
+                <!-- PORTFOLIO -->
+                <div class="form-group">
+
+                    <label for="portfolioUrl">
+                        Portfolio / GitHub URL
+                        <span class="optional">
+                            Optional
+                        </span>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="portfolioUrl"
+                        placeholder="https://github.com/username"
+                    />
+
+                    <small
+                        id="portfolioError"
+                        class="form-error"
+                    ></small>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+                <div class="form-group">
+
+                    <label for="coverMessage">
+                        Short Message
+                        <span class="optional">
+                            Optional
+                        </span>
+                    </label>
+
+                    <textarea
+                        id="coverMessage"
+                        rows="5"
+                        placeholder="Tell the company why you're interested in this internship..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- SUCCESS -->
+                <div
+                    id="applicationSuccess"
+                    class="application-success"
+                    hidden
+                >
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>
+                            Application submitted!
+                        </strong>
+
+                        <p>
+                            Your application has been recorded successfully.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="applyCloseBtnSecondary"
+                        class="btn btn-outline"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Submit Application
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="#" class="brand">
+                    <span class="brand-icon">IB</span>
+                    <span class="brand-text">InternBoard</span>
+                </a>
+
+                <p>
+                    Connecting students with meaningful internship
+                    opportunities.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#internships">
+                    Internships
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#internships">
+                    Explore Roles
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <p>
+                © 2026 InternBoard. All rights reserved.
+            </p>
+
+            <span>
+                Built for students 🚀
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="script.js"></script>
+
+</body>
+</html>
