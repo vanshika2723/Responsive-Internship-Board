@@ -1278,161 +1278,116 @@ function validateApplication() {
 }
 
 
+
 /* =========================================================
-   APPLICATION SUBMIT
+   APPLICATION SUBMIT - BACKEND API
 ========================================================= */
 
 if (applicationForm) {
+    applicationForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    applicationForm.addEventListener(
-        "submit",
-        function (event) {
+        if (!validateApplication()) {
+            return;
+        }
 
-            event.preventDefault();
+        if (!selectedInternship) {
+            return;
+        }
 
+        const submitButton = applicationForm.querySelector(
+            'button[type="submit"]'
+        );
 
-            const valid =
-                validateApplication();
+        const originalButtonHTML = submitButton
+            ? submitButton.innerHTML
+            : "Submit Application";
 
+        const application = {
+            applicant_name: applicantName.value.trim(),
+            applicant_email: applicantEmail.value.trim(),
+            portfolio_url: portfolioUrl.value.trim(),
+            cover_message: coverMessage.value.trim()
+        };
 
-            if (!valid) {
-                return;
+        try {
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = "Submitting...";
             }
 
+            const response = await fetch(
+                `http://localhost:5000/api/internships/${encodeURIComponent(selectedInternship.id)}/applications`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(application)
+                }
+            );
 
-            if (!selectedInternship) {
-                return;
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message ||
+                    result.errors?.join(", ") ||
+                    "Unable to submit application."
+                );
             }
 
+            // Successful response from backend
+            applicationSuccess.textContent =
+                "Application submitted successfully!";
 
-            const application = {
+            applicationSuccess.hidden = false;
 
-                id:
-                    "APP-" +
-                    Date.now(),
-
-                internshipId:
-                    selectedInternship.id,
-
-                internshipTitle:
-                    selectedInternship.title,
-
-                company:
-                    selectedInternship.company,
-
-                applicantName:
-                    applicantName.value.trim(),
-
-                applicantEmail:
-                    applicantEmail.value.trim(),
-
-                portfolio:
-                    portfolioUrl.value.trim(),
-
-                message:
-                    coverMessage.value.trim(),
-
-                submittedAt:
-                    new Date().toISOString()
-            };
-
-
-            /* ---------------- SAVE APPLICATION ---------------- */
-
-            const existingApplications =
-                JSON.parse(
-                    localStorage.getItem(
-                        "internboard_applications"
-                    ) || "[]"
-                );
-
-
-            existingApplications.push(
-                application
-            );
-
-
-            localStorage.setItem(
-                "internboard_applications",
-                JSON.stringify(
-                    existingApplications
-                )
-            );
-
-
-            /* ---------------- SUCCESS ---------------- */
-
-            applicationSuccess.hidden =
-                false;
-
-
-            applicationForm
-                .querySelectorAll(
-                    "input, textarea, button"
-                )
-                .forEach(element => {
-
-                    if (
-                        element.type !==
-                        "button"
-                    ) {
-                        element.disabled =
-                            true;
-                    }
-
-                });
-
-
-            const submitButton =
-                applicationForm.querySelector(
-                    'button[type="submit"]'
-                );
-
+            applicationForm.querySelectorAll(
+                "input, textarea"
+            ).forEach(element => {
+                element.disabled = true;
+            });
 
             if (submitButton) {
-
-                submitButton.innerHTML =
-                    "Application Submitted ✓";
-
-                submitButton.disabled =
-                    true;
+                submitButton.textContent = "Application Submitted ✓";
             }
 
-
-            /* ---------------- AUTO CLOSE ---------------- */
-
             setTimeout(() => {
-
                 closeApplyModal();
-
-
                 applicationForm.reset();
+                clearValidation();
 
+                applicationSuccess.hidden = true;
 
-                applicationSuccess.hidden =
-                    true;
-
-
-                applicationForm
-                    .querySelectorAll(
-                        "input, textarea, button"
-                    )
-                    .forEach(element => {
-                        element.disabled =
-                            false;
-                    });
-
+                applicationForm.querySelectorAll(
+                    "input, textarea"
+                ).forEach(element => {
+                    element.disabled = false;
+                });
 
                 if (submitButton) {
-
-                    submitButton.innerHTML =
-                        "Submit Application <span>→</span>";
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonHTML;
                 }
-
-
             }, 2500);
+
+        } catch (error) {
+            console.error("Application submission error:", error);
+
+            applicationSuccess.textContent =
+                error.message === "Failed to fetch"
+                    ? "Cannot connect to the server. Please ensure the backend is running."
+                    : error.message;
+
+            applicationSuccess.hidden = false;
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonHTML;
+            }
         }
-    );
+    });
 }
 
 

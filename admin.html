@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | InternBoard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="index.html" class="brand">
+                <span class="brand-icon">I</span>
+                <span>Intern<span class="brand-accent">Board</span></span>
+            </a>
+
+            <div class="side-label">WORKSPACE</div>
+            <a class="nav-item active" href="admin.html">▦ &nbsp; Dashboard</a>
+            <a class="nav-item" href="#applications">▤ &nbsp; Applications</a>
+            <a class="nav-item" href="index.html">⌕ &nbsp; Browse Internships</a>
+
+            <div class="sidebar-bottom">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin Account</small>
+                </div>
+                <button id="logoutBtn" title="Logout">↗</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <div class="eyebrow">ADMINISTRATION / OVERVIEW</div>
+                    <h1>Dashboard Overview</h1>
+                    <p>Manage internship applications in one place.</p>
+                </div>
+                <button class="refresh-btn" id="refreshBtn">↻ &nbsp; Refresh</button>
+            </header>
+
+            <section class="welcome-banner">
+                <div>
+                    <span class="welcome-tag">ADMIN WORKSPACE</span>
+                    <h2>Welcome back, Admin! 👋</h2>
+                    <p>Here's what's happening with your internship applications.</p>
+                </div>
+                <div class="banner-symbol">IB</div>
+            </section>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Applications</span>
+                        <span class="stat-icon purple">▤</span>
+                    </div>
+                    <h2 id="totalCount">—</h2>
+                    <p>All submitted applications</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Unique Internships</span>
+                        <span class="stat-icon blue">⌘</span>
+                    </div>
+                    <h2 id="internshipCount">—</h2>
+                    <p>Internship listings applied to</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Today's Applications</span>
+                        <span class="stat-icon green">↗</span>
+                    </div>
+                    <h2 id="todayCount">—</h2>
+                    <p>Received today</p>
+                </article>
+            </section>
+
+            <section class="applications-panel" id="applications">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Recent Applications</h2>
+                        <p>Review candidate details and portfolios.</p>
+                    </div>
+                    <span class="live-badge"><span></span> Live data</span>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input id="searchInput" type="search"
+                            placeholder="Search name, email or internship...">
+                    </div>
+
+                    <button class="export-btn" id="exportBtn">↓ &nbsp; Export CSV</button>
+                </div>
+
+                <div id="statusMessage" class="status-message" role="status">
+                    Loading applications...
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>APPLICANT</th>
+                                <th>INTERNSHIP</th>
+                                <th>DOMAIN</th>
+                                <th>APPLIED ON</th>
+                                <th>PORTFOLIO</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="resultCount">0 applications</span>
+                    <span>InternBoard Admin</span>
+                </div>
+            </section>
+
+            <footer>© 2026 InternBoard · Admin Workspace</footer>
+        </main>
+    </div>
+
+    <div class="modal" id="detailsModal" hidden>
+        <div class="modal-card">
+            <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+            <div class="modal-eyebrow">APPLICATION DETAILS</div>
+            <h2 id="detailName">Applicant</h2>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

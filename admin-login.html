@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | InternBoard</title>
+  <link rel="stylesheet" href="admin-login.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="login-container">
+
+    <section class="login-visual">
+      <a href="index.html" class="brand">
+        <span class="brand-logo">IB</span>
+        <span>Intern<span>Board</span></span>
+      </a>
+
+      <div class="visual-content">
+        <span class="eyebrow"><span class="dot"></span> ADMIN CONTROL CENTER</span>
+
+        <h1>Manage talent.<br><span>Shape futures.</span></h1>
+
+        <p>
+          Your central workspace to manage internship applications,
+          discover promising candidates, and keep everything organized.
+        </p>
+
+        <div class="visual-art">
+          <div class="decor decor-one"></div>
+          <div class="decor decor-two"></div>
+
+          <div class="dashboard-card">
+            <div class="dash-top">
+              <div class="dash-logo">IB</div>
+              <div class="dash-lines"><span></span><span></span></div>
+              <div class="dash-avatar">A</div>
+            </div>
+
+            <div class="dash-title">
+              <div>
+                <small>OVERVIEW</small>
+                <h3>Application Dashboard</h3>
+              </div>
+              <span class="live-label">● Live</span>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <span>Total Applications</span>
+                <strong>128</strong>
+                <small>Applications received</small>
+              </div>
+              <div class="stat-box">
+                <span>Open Positions</span>
+                <strong>12</strong>
+                <small>Across all domains</small>
+              </div>
+            </div>
+
+            <div class="activity-heading">
+              <strong>Recent activity</strong>
+              <span>Overview</span>
+            </div>
+
+            <div class="activity-row">
+              <div class="activity-avatar purple">P</div>
+              <div class="activity-text">
+                <strong>New application received</strong>
+                <small>Frontend Developer</small>
+              </div>
+              <span class="activity-check">✓</span>
+            </div>
+
+            <div class="activity-row">
+              <div class="activity-avatar orange">R</div>
+              <div class="activity-text">
+                <strong>Candidate application</strong>
+                <small>Web Development</small>
+              </div>
+              <span class="activity-check">✓</span>
+            </div>
+          </div>
+
+          <div class="floating-note">
+            <span class="note-icon">✓</span>
+            <div><strong>Everything in one place</strong><small>Your team, your workflow</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-footer">
+        <span>© 2026 InternBoard</span>
+        <span>Built for better opportunities ✦</span>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="mobile-brand">
+          <span class="brand-logo">IB</span> InternBoard
+        </div>
+
+        <div class="admin-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3L20 6V11C20 16 16.5 19.5 12 21C7.5 19.5 4 16 4 11V6L12 3Z"
+              stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M9 12L11 14L15.5 9.5"
+              stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <span class="form-eyebrow">SECURE ADMIN ACCESS</span>
+        <h2>Welcome back!</h2>
+        <p class="subtitle">Sign in to access your admin dashboard.</p>
+
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label for="email">Admin email address</label>
+            <div class="input-wrapper">
+              <span class="field-icon">✉</span>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="admin@internboard.com"
+                autocomplete="username"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <span class="field-icon">♙</span>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter your admin password"
+                autocomplete="current-password"
+                required
+              >
+              <button class="toggle-password" id="togglePassword"
+                type="button" aria-label="Show password">Show</button>
+            </div>
+          </div>
+
+          <p id="loginMessage" class="message" role="status" aria-live="polite"></p>
+
+          <button type="submit" class="login-button" id="loginButton">
+            <span>Sign in to dashboard</span>
+            <span class="button-arrow">→</span>
+          </button>
+        </form>
+
+        <div class="secure-note">
+          <span>🔒</span>
+          <span>Your admin session is protected with secure authentication.</span>
+        </div>
+
+        <a class="back-link" href="index.html">← Back to internships</a>
+      </div>
+
+      <div class="panel-footer">
+        Need assistance? Contact your system administrator.
+      </div>
+    </section>
+  </main>
+
+  <script src="admin-login.js"></script>
+</body>
+</html>
