@@ -4,126 +4,73 @@
 ========================================================= */
 
 
+
 /* =========================================================
-   INTERNSHIP DATA
+   INTERNSHIP DATA - LOADED FROM BACKEND API
 ========================================================= */
 
-const internships = [
-    {
-        id: "INT-101",
-        title: "Frontend Intern",
-        company: "TechNova",
-        domain: "Full Stack Development",
-        mode: "Remote",
-        location: "India",
-        stipend: "₹15,000 / month",
-        stipendValue: 15000,
-        duration: "3 Months",
-        deadline: "Oct 30, 2026",
-        openings: 3,
-        skills: [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "React"
-        ],
-        featured: true,
-        description:
-            "Work with our frontend team to build responsive and interactive web applications. You will get hands-on experience with modern frontend technologies and real-world development practices."
-    },
+const API_BASE = "http://localhost:5000/api";
 
-    {
-        id: "INT-102",
-        title: "API Engineering Intern",
-        company: "CodeSphere",
-        domain: "Full Stack Development",
-        mode: "Hybrid",
-        location: "Pune",
-        stipend: "₹18,000 / month",
-        stipendValue: 18000,
-        duration: "4 Months",
-        deadline: "Nov 05, 2026",
-        openings: 2,
-        skills: [
-            "Node.js",
-            "Express.js",
-            "SQL",
-            "REST API"
-        ],
-        featured: true,
-        description:
-            "Join our backend engineering team and work on scalable APIs, database integration and server-side applications. This role is ideal for students interested in backend development."
-    },
+let internships = [];
+let internshipsLoading = true;
 
-    {
-        id: "INT-103",
-        title: "UI/UX Intern",
-        company: "PixelCraft",
-        domain: "UI/UX",
-        mode: "Remote",
-        location: "India",
-        stipend: "₹12,000 / month",
-        stipendValue: 12000,
-        duration: "3 Months",
-        deadline: "Oct 25, 2026",
-        openings: 1,
-        skills: [
-            "Figma",
-            "User Research",
-            "Wireframing",
-            "Accessibility"
-        ],
-        featured: true,
-        description:
-            "Create beautiful and user-friendly digital experiences while working with experienced designers. You will contribute to wireframes, prototypes, user research and design systems."
-    },
+async function loadInternships() {
+    internshipsLoading = true;
 
-    {
-        id: "INT-104",
-        title: "Data Analyst Intern",
-        company: "DataWorks",
-        domain: "Data Analytics",
-        mode: "On-site",
-        location: "Bengaluru",
-        stipend: "₹20,000 / month",
-        stipendValue: 20000,
-        duration: "6 Months",
-        deadline: "Nov 12, 2026",
-        openings: 2,
-        skills: [
-            "Excel",
-            "SQL",
-            "Python",
-            "Data Visualization"
-        ],
-        featured: false,
-        description:
-            "Analyze business data, create meaningful reports and support data-driven decision making. You will work with real datasets and learn practical analytics workflows."
-    },
-
-    {
-        id: "INT-105",
-        title: "Security Operations Intern",
-        company: "SecureNet",
-        domain: "Cyber Security",
-        mode: "Remote",
-        location: "India",
-        stipend: "₹16,000 / month",
-        stipendValue: 16000,
-        duration: "4 Months",
-        deadline: "Nov 20, 2026",
-        openings: 1,
-        skills: [
-            "Linux",
-            "Networking",
-            "Security Logs",
-            "SIEM"
-        ],
-        featured: false,
-        description:
-            "Assist our security operations team in monitoring security events, analyzing logs and identifying potential threats. Gain practical exposure to cybersecurity operations."
+    if (internshipGrid) {
+        internshipGrid.innerHTML =
+            "<p>Loading internships...</p>";
     }
-];
+
+    try {
+        const response = await fetch(`${API_BASE}/internships`);
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.message || "Failed to load internships."
+            );
+        }
+
+        const records = Array.isArray(result.data)
+            ? result.data
+            : [];
+
+        internships = records.map((item) => ({
+            ...item,
+            id: String(item.id),
+            company: item.company || item.company_name || "InternBoard",
+            stipend: item.stipend
+                ? String(item.stipend)
+                : "Not specified",
+            stipendValue: Number(item.stipendValue || 0),
+            duration: item.duration || "Not specified",
+            deadline: item.deadline || "Check details",
+            openings: Number(item.openings || 0),
+            skills: Array.isArray(item.skills) ? item.skills : [],
+            featured: Boolean(item.featured),
+            description: item.description || "No description available."
+        }));
+
+        renderInternships();
+
+    } catch (error) {
+        console.error("Loading internships failed:", error);
+
+        if (internshipGrid) {
+            internshipGrid.innerHTML =
+                "<p>Unable to load internships. Check that the backend server is running and try again.</p>";
+        }
+
+        if (resultsCount) {
+            resultsCount.textContent = "Unable to load opportunities";
+        }
+
+    } finally {
+        internshipsLoading = false;
+    }
+}
 
 
 /* =========================================================
@@ -1317,7 +1264,7 @@ if (applicationForm) {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/internships/${encodeURIComponent(selectedInternship.id)}/applications`,
+              `${API_BASE}/internships/${encodeURIComponent(selectedInternship.id)}/applications`,
                 {
                     method: "POST",
                     headers: {
@@ -1608,7 +1555,7 @@ document.querySelectorAll(
 
 
 /* =========================================================
-   INITIAL RENDER
+   INITIAL LOAD
 ========================================================= */
 
-renderInternships();
+loadInternships();

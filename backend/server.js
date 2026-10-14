@@ -303,7 +303,7 @@ app.get("/api/internships/:id", (req, res) => {
 });
 
 // CREATE: New internship
-app.post("/api/internships", (req, res) => {
+app.post("/api/internships", requireAdmin,(req, res) => {
     const errors = validateInternship(req.body);
 
     if (errors.length) {
@@ -360,7 +360,7 @@ app.post("/api/internships", (req, res) => {
 });
 
 // UPDATE: Full or partial update
-app.put("/api/internships/:id", (req, res) => {
+app.put("/api/internships/:id",requireAdmin, (req, res) => {
     const errors = validateInternship(req.body, true);
 
     if (errors.length) {
@@ -435,7 +435,7 @@ app.put("/api/internships/:id", (req, res) => {
 });
 
 // DELETE: Remove internship
-app.delete("/api/internships/:id", (req, res) => {
+app.delete("/api/internships/:id",requireAdmin, (req, res) => {
     try {
         const result = db.prepare(
             "DELETE FROM internships WHERE id = ?"
